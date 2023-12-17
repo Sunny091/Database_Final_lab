@@ -1,0 +1,472 @@
+<html>
+    <body
+        style="
+            background-repeat: no-repeat;
+            background-size: 100%;
+            background-attachment: fixed;
+        "
+        background="static/bg.jpg"
+    >
+        <div style="text-align: center">
+            <font face="微軟正黑體">
+                <b>
+                    <br />
+                    <img src="static/poster.jpg" width="500" />
+                    <br />
+
+                    <div style="position: relative">
+                        <img src="static/欄位.jpg" width="100" height="100" />
+                        <img src="static/欄位2.jpg" width="400" height="100" />
+                        <span style="position: absolute; top: 40; left: 510"
+                            >您的身分</span
+                        >
+
+                        <label
+                            for="masses"
+                            style="position: absolute; top: 40; left: 650"
+                        >
+                            <input
+                                type="radio"
+                                id="masses"
+                                name="identity"
+                                value="1"
+                                onclick="choosefunc()"
+                            />
+                            一般民眾
+                        </label>
+
+                        <label
+                            for="organization"
+                            style="position: absolute; top: 40; left: 800"
+                        >
+                            <input
+                                type="radio"
+                                id="organization"
+                                name="identity"
+                                value="2"
+                                onclick="choosefunc()"
+                            />
+                            公家機關
+                        </label>
+                    </div>
+
+                    <div id="img3" style="display: none">
+                        <div style="position: relative">
+                            <img
+                                src="static/欄位.jpg"
+                                width="100"
+                                height="100"
+                            />
+                            <img
+                                src="static/欄位2.jpg"
+                                width="400"
+                                height="100"
+                            />
+                            <span style="position: absolute; top: 30; left: 510"
+                                >功能選擇</span
+                            >
+                            <span style="position: absolute; top: 60; left: 505"
+                                >(一般民眾)</span
+                            >
+                            <label
+                                for="accidentinfo_pub"
+                                style="position: absolute; top: 40; left: 650"
+                            >
+                                <input
+                                    type="radio"
+                                    id="accidentinfo_pub"
+                                    name="functionpub"
+                                    value="1"
+                                    onclick="ShowHideDivnew()"
+                                />
+                                查詢車禍資料
+                            </label>
+
+                            <label
+                                for="statisticinfo_pub"
+                                style="position: absolute; top: 40; left: 800"
+                            >
+                                <input
+                                    type="radio"
+                                    id="statisticinfo_pub"
+                                    name="functionpub"
+                                    value="2"
+                                    onclick="ShowHideDivnew()"
+                                />
+                                查詢統計資料
+                            </label>
+                        </div>
+                    </div>
+
+                    <div id="img4" style="display: none">
+                        <div style="position: relative">
+                            <img
+                                src="static/欄位.jpg"
+                                width="100"
+                                height="100"
+                            />
+                            <img
+                                src="static/欄位2.jpg"
+                                width="400"
+                                height="100"
+                            />
+                            <span style="position: absolute; top: 30; left: 510"
+                                >功能選擇</span
+                            >
+                            <span style="position: absolute; top: 60; left: 505"
+                                >(公家機關)</span
+                            >
+                            <label
+                                for="accidentinfo"
+                                style="position: absolute; top: 40; left: 650"
+                            >
+                                <input
+                                    type="radio"
+                                    id="accidentinfo"
+                                    name="function"
+                                    value="1"
+                                    onclick="ShowHideDiv()"
+                                />
+                                查詢車禍資料
+                            </label>
+
+                            <label
+                                for="statisticinfo"
+                                style="position: absolute; top: 40; left: 800"
+                            >
+                                <input
+                                    type="radio"
+                                    id="statisticinfo"
+                                    name="function"
+                                    value="2"
+                                    onclick="ShowHideDiv()"
+                                />
+                                查詢統計資料
+                            </label>
+                        </div>
+                    </div>
+
+                    <script type="text/javascript">
+                        function choosefunc() {
+                            var show = "";
+                            var apm = document.getElementsByName("identity");
+                            for (var i = 0; i < apm.length; i++) {
+                                if (apm[i].checked) show = apm[i].value;
+                            }
+                            if (show == "1") {
+                                document.getElementById("img3").style.display =
+                                    "block";
+                                document.getElementById("img4").style.display =
+                                    "none";
+                                document.getElementById("img1").style.display =
+                                    "none";
+                                document.getElementById("img2").style.display =
+                                    "none";
+                                document.getElementById("img5").style.display =
+                                    "none";
+                            } else if (show == "2") {
+                                document.getElementById("img3").style.display =
+                                    "none";
+                                document.getElementById("img4").style.display =
+                                    "block";
+                                document.getElementById("img1").style.display =
+                                    "none";
+                                document.getElementById("img2").style.display =
+                                    "none";
+                                document.getElementById("img5").style.display =
+                                    "none";
+                            }
+                        }
+                    </script>
+
+                    <div id="img1" style="display: none">
+                        <div style="position: relative">
+                            <img
+                                src="static/欄位.jpg"
+                                width="100"
+                                height="100"
+                            />
+                            <img
+                                src="static/欄位2.jpg"
+                                width="400"
+                                height="100"
+                            />
+                            <span style="position: absolute; top: 40; left: 510"
+                                >填入資料</span
+                            >
+                            <form method="post" action="/submit">
+                                <br />
+                                <span
+                                    style="
+                                        position: absolute;
+                                        top: 25;
+                                        left: 650;
+                                    "
+                                    >身分證字號</span
+                                >
+                                <input
+                                    style="
+                                        position: absolute;
+                                        top: 30;
+                                        left: 750;
+                                    "
+                                    name="personID"
+                                    placeholder="請輸入身分證字號"
+                                /><br />
+                                <br />
+                                <span
+                                    style="
+                                        position: absolute;
+                                        top: 55;
+                                        left: 650;
+                                    "
+                                    >車牌號碼</span
+                                >
+                                <input
+                                    style="
+                                        position: absolute;
+                                        top: 60;
+                                        left: 750;
+                                    "
+                                    name="carID"
+                                    placeholder="請輸入車牌號碼"
+                                /><br />
+                                <input
+                                    name="submit"
+                                    type="image"
+                                    style="
+                                        position: absolute;
+                                        top: 110;
+                                        left: 895;
+                                    "
+                                    src="static/確認查詢.jpg"
+                                    width="100"
+                                    height="30"
+                                />
+                            </form>
+                        </div>
+                    </div>
+
+                    <div id="img2" style="display: none">
+                        <div style="position: relative">
+                            <img
+                                src="static/欄位.jpg"
+                                width="100"
+                                height="230"
+                            />
+                            <img
+                                src="static/欄位2.jpg"
+                                width="400"
+                                height="230"
+                            />
+                            <span
+                                style="position: absolute; top: 105; left: 510"
+                                >查詢選項</span
+                            >
+
+                            <form method="post" action="/submit">
+                                <label
+                                    for="1"
+                                    style="
+                                        position: absolute;
+                                        top: 0;
+                                        left: 650;
+                                        text-align: left;
+                                    "
+                                >
+                                    <br />
+                                    <input
+                                        type="radio"
+                                        id="1"
+                                        name="choice"
+                                        value="1"
+                                    />
+                                    哪區交通事故最頻繁 <br />
+                                    <input
+                                        type="radio"
+                                        id="1"
+                                        name="choice"
+                                        value="2"
+                                    />
+                                    交通事故肇事因素排行 <br />
+                                    <input
+                                        type="radio"
+                                        id="1"
+                                        name="choice"
+                                        value="3"
+                                    />
+                                    最容易發生交通事故的時段 <br />
+                                    <input
+                                        type="radio"
+                                        id="1"
+                                        name="choice"
+                                        value="4"
+                                    />
+                                    保護裝備和主要傷處的關聯 <br />
+                                    <input
+                                        type="radio"
+                                        id="1"
+                                        name="choice"
+                                        value="5"
+                                    />
+                                    飲酒程度和受傷程度的關聯 <br />
+                                    <input
+                                        type="radio"
+                                        id="1"
+                                        name="choice"
+                                        value="6"
+                                    />
+                                    天候和地點的關聯 <br />
+                                    <input
+                                        type="radio"
+                                        id="1"
+                                        name="choice"
+                                        value="7"
+                                    />
+                                    哪裡容易因路面不平而造成車禍 <br />
+                                    <input
+                                        type="radio"
+                                        id="1"
+                                        name="choice"
+                                        value="8"
+                                    />
+                                    時間和主要肇因的關聯 <br />
+                                    <input
+                                        type="radio"
+                                        id="1"
+                                        name="choice"
+                                        value="9"
+                                    />
+                                    計算各區因酒駕肇事的排名 <br />
+                                </label>
+                                <input
+                                    name="submit"
+                                    type="image"
+                                    style="
+                                        position: absolute;
+                                        top: 240;
+                                        left: 895;
+                                    "
+                                    src="static/確認查詢.jpg"
+                                    width="100"
+                                    height="30"
+                                />
+                            </form>
+                        </div>
+                    </div>
+
+                    <div id="img5" style="display: none">
+                        <div style="position: relative">
+                            <img
+                                src="static/欄位.jpg"
+                                width="100"
+                                height="100"
+                            />
+                            <img
+                                src="static/欄位2.jpg"
+                                width="400"
+                                height="100"
+                            />
+                            <span style="position: absolute; top: 40; left: 510"
+                                >查詢選項</span
+                            >
+
+                            <form method="post" action="/submit">
+                                <label
+                                    for="1"
+                                    style="
+                                        position: absolute;
+                                        top: 0;
+                                        left: 650;
+                                        text-align: left;
+                                    "
+                                >
+                                    <br />
+                                    <input
+                                        type="radio"
+                                        id="1"
+                                        name="choice"
+                                        value="1"
+                                    />
+                                    哪區交通事故最頻繁 <br />
+                                    <input
+                                        type="radio"
+                                        id="1"
+                                        name="choice"
+                                        value="2"
+                                    />
+                                    交通事故肇事因素排行 <br />
+                                    <input
+                                        type="radio"
+                                        id="1"
+                                        name="choice"
+                                        value="3"
+                                    />
+                                    最容易發生交通事故的時段 <br />
+                                </label>
+                                <input
+                                    name="submit"
+                                    type="image"
+                                    style="
+                                        position: absolute;
+                                        top: 110;
+                                        left: 895;
+                                    "
+                                    src="static/確認查詢.jpg"
+                                    width="100"
+                                    height="30"
+                                />
+                            </form>
+                        </div>
+                    </div>
+
+                    <script type="text/javascript">
+                        function ShowHideDivnew() {
+                            var show = "";
+                            var apm = document.getElementsByName("functionpub");
+                            for (var i = 0; i < apm.length; i++) {
+                                if (apm[i].checked) show = apm[i].value;
+                            }
+                            if (show == "1") {
+                                document.getElementById("img1").style.display =
+                                    "block";
+                                document.getElementById("img5").style.display =
+                                    "none";
+                            } else if (show == "2") {
+                                document.getElementById("img1").style.display =
+                                    "none";
+                                document.getElementById("img2").style.display =
+                                    "none";
+                                document.getElementById("img5").style.display =
+                                    "block";
+                            }
+                        }
+                    </script>
+
+                    <script type="text/javascript">
+                        function ShowHideDiv() {
+                            var show = "";
+                            var apm = document.getElementsByName("function");
+                            for (var i = 0; i < apm.length; i++) {
+                                if (apm[i].checked) show = apm[i].value;
+                            }
+                            if (show == "1") {
+                                document.getElementById("img1").style.display =
+                                    "block";
+                                document.getElementById("img2").style.display =
+                                    "none";
+                            } else if (show == "2") {
+                                document.getElementById("img1").style.display =
+                                    "none";
+                                document.getElementById("img2").style.display =
+                                    "block";
+                                document.getElementById("img5").style.display =
+                                    "none";
+                            }
+                        }
+                    </script>
+                </b>
+            </font>
+        </div>
+    </body>
+</html>
