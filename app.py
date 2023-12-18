@@ -36,8 +36,6 @@ location_dist = {
 }
 
 
-# from gevent import pywsgi
-
 app = Flask(__name__)
 
 
@@ -51,6 +49,7 @@ def submit():
     if request.method == "POST":
         # 哪個區交通事故最頻繁(排序)
         if request.form.get("choice") == "1":
+            # 輸入quary進行資料庫查詢
             quary = """
                 SELECT District, COUNT(*) AS Accident_Count
                 FROM Location
@@ -63,19 +62,23 @@ def submit():
             answer.append(["區", "次數"])
             for row in result:
                 row = list(row)
+                # 把區的英文名字轉成中文
                 if row[0] in location_dist.keys():
                     row[0] = location_dist.get(row[0])
                 answer.append(row)
+            # 將結果轉成csv格式
             csv_buffer = io.StringIO()
             csv_writer = csv.writer(csv_buffer, delimiter=",", quotechar="'")
             for row in answer:
                 csv_writer.writerow(row)
             csv_data = csv_buffer.getvalue()
             csv_data_list = [line.split(",") for line in csv_data.split("\n") if line]
+            # 將結果回傳前端，用answer(x2)顯示
             return render_template("answer(x2).html", data=csv_data_list)
 
         # 交通事故的肇事因素(排序)
         elif request.form.get("choice") == "2":
+            # 輸入quary進行資料庫查詢
             quary = """
                 SELECT Causing_factor, COUNT(*) AS Factor_Count
                 FROM accident
@@ -88,16 +91,19 @@ def submit():
             answer.append(["因素", "次數"])
             for row in result:
                 answer.append(row)
+            # 將結果轉成csv格式
             csv_buffer = io.StringIO()
             csv_writer = csv.writer(csv_buffer, delimiter=",", quotechar="'")
             for row in answer:
                 csv_writer.writerow(row)
             csv_data = csv_buffer.getvalue()
             csv_data_list = [line.split(",") for line in csv_data.split("\n") if line]
+            # 將結果回傳前端，用answer(x2)顯示
             return render_template("answer(x2).html", data=csv_data_list)
 
         # 哪個時段最容易發生交通事故
         elif request.form.get("choice") == "3":
+            # 輸入quary進行資料庫查詢
             quary = """
                 SELECT Hour, COUNT(*) AS Accident_Count
                 FROM time
@@ -110,16 +116,19 @@ def submit():
             answer.append(["時間", "次數"])
             for row in result:
                 answer.append(row)
+            # 將結果轉成csv格式
             csv_buffer = io.StringIO()
             csv_writer = csv.writer(csv_buffer, delimiter=",", quotechar="'")
             for row in answer:
                 csv_writer.writerow(row)
             csv_data = csv_buffer.getvalue()
             csv_data_list = [line.split(",") for line in csv_data.split("\n") if line]
+            # 將結果回傳前端，用answer(x2)顯示
             return render_template("answer(x2).html", data=csv_data_list)
 
         # 保護裝備和主要傷處之間的關聯
         elif request.form.get("choice") == "4":
+            # 輸入quary進行資料庫查詢
             quary = """
                 WITH ProtectiveEquipMainInjuryCounts AS (
                     SELECT
@@ -152,16 +161,19 @@ def submit():
             answer.append(["保護裝備", "主要傷處", "次數"])
             for row in result:
                 answer.append(row)
+            # 將結果轉成csv格式
             csv_buffer = io.StringIO()
             csv_writer = csv.writer(csv_buffer, delimiter=",", quotechar="'")
             for row in answer:
                 csv_writer.writerow(row)
             csv_data = csv_buffer.getvalue()
             csv_data_list = [line.split(",") for line in csv_data.split("\n") if line]
+            # 將結果回傳前端，用answer(x3)顯示
             return render_template("answer(x3).html", data=csv_data_list)
 
         # 飲酒程度和受傷程度的關聯
         elif request.form.get("choice") == "5":
+            # 輸入quary進行資料庫查詢
             quary = """
                 SELECT
                     s.Drinking_situation,
@@ -177,16 +189,19 @@ def submit():
             answer.append(["飲酒程度", "受傷＋死亡（人數）"])
             for row in result:
                 answer.append(row)
+            # 將結果轉成csv格式
             csv_buffer = io.StringIO()
             csv_writer = csv.writer(csv_buffer, delimiter=",", quotechar="'")
             for row in answer:
                 csv_writer.writerow(row)
             csv_data = csv_buffer.getvalue()
             csv_data_list = [line.split(",") for line in csv_data.split("\n") if line]
+            # 將結果回傳前端，用answer(x2)顯示
             return render_template("answer(x2).html", data=csv_data_list)
 
         # 天候和地點的關聯
         elif request.form.get("choice") == "6":
+            # 輸入quary進行資料庫查詢
             quary = """
                 WITH ClimateDistrictCounts AS (
                     SELECT
@@ -219,19 +234,23 @@ def submit():
             answer.append(["天候", "區", "次數"])
             for row in result:
                 row = list(row)
+                # 把區的英文名字轉成中文
                 if row[1] in location_dist.keys():
                     row[1] = location_dist.get(row[1])
                 answer.append(row)
+            # 將結果轉成csv格式
             csv_buffer = io.StringIO()
             csv_writer = csv.writer(csv_buffer, delimiter=",", quotechar="'")
             for row in answer:
                 csv_writer.writerow(row)
             csv_data = csv_buffer.getvalue()
             csv_data_list = [line.split(",") for line in csv_data.split("\n") if line]
+            # 將結果回傳前端，用answer(x3)顯示
             return render_template("answer(x3).html", data=csv_data_list)
 
         # 哪裡容易因路面不平而造成車禍
         elif request.form.get("choice") == "7":
+            # 輸入quary進行資料庫查詢
             quary = """
                 SELECT l.District, COUNT(CASE WHEN r.Road_defect = 1 THEN 1 END) AS Road_defect_1_Count,
                     COUNT(CASE WHEN r.Road_defect = 2 THEN 1 END) AS Road_defect_2_Count,
@@ -247,19 +266,23 @@ def submit():
             answer.append(["區", "路面鬆軟（次數）", "隆起或凹陷不平（次數）", "有坑洞（次數）"])
             for row in result:
                 row = list(row)
+                # 把區的英文名字轉成中文
                 if row[0] in location_dist.keys():
                     row[0] = location_dist.get(row[0])
                 answer.append(row)
+            # 將結果轉成csv格式
             csv_buffer = io.StringIO()
             csv_writer = csv.writer(csv_buffer, delimiter=",", quotechar="'")
             for row in answer:
                 csv_writer.writerow(row)
             csv_data = csv_buffer.getvalue()
             csv_data_list = [line.split(",") for line in csv_data.split("\n") if line]
+            # 將結果回傳前端，用answer(x4)顯示
             return render_template("answer(x4).html", data=csv_data_list)
 
         # 時間和主要肇因的關聯
         elif request.form.get("choice") == "8":
+            # 輸入quary進行資料庫查詢
             quary = """
                 -- 使用視圖和資料表連接，計算每個時段的肇因排名
                 WITH RankedCausingFactors AS (
@@ -293,16 +316,19 @@ def submit():
             answer.append(["時間", "肇因"])
             for row in result:
                 answer.append(row)
+            # 將結果轉成csv格式
             csv_buffer = io.StringIO()
             csv_writer = csv.writer(csv_buffer, delimiter=",", quotechar="'")
             for row in answer:
                 csv_writer.writerow(row)
             csv_data = csv_buffer.getvalue()
             csv_data_list = [line.split(",") for line in csv_data.split("\n") if line]
+            # 將結果回傳前端，用answer(x2)顯示
             return render_template("answer(x2).html", data=csv_data_list)
 
         # 計算各區因酒駕肇事的排名
         elif request.form.get("choice") == "9":
+            # 輸入quary進行資料庫查詢
             quary = """
                 SELECT l.District, COUNT(s.Drinking_situation) AS Frequency
                 FROM location l
@@ -317,21 +343,26 @@ def submit():
             answer.append(["區", "次數"])
             for row in result:
                 row = list(row)
+                # 把區的英文名字轉成中文
                 if row[0] in location_dist.keys():
                     row[0] = location_dist.get(row[0])
                 answer.append(row)
+            # 將結果轉成csv格式
             csv_buffer = io.StringIO()
             csv_writer = csv.writer(csv_buffer, delimiter=",", quotechar="'")
             for row in answer:
                 csv_writer.writerow(row)
             csv_data = csv_buffer.getvalue()
             csv_data_list = [line.split(",") for line in csv_data.split("\n") if line]
+            # 將結果回傳前端，用answer(x2)顯示
             return render_template("answer(x2).html", data=csv_data_list)
 
         # 用身分證或車牌查詢事故的相關資訊
         elif request.form.get("personID") and request.form.get("carID"):
+            # 讀取前端的輸入
             persionID = request.form.get("personID")
             carID = request.form.get("carID")
+            # 輸入quary進行資料庫查詢
             quary = """
                 SELECT *
                 FROM all_info
@@ -340,6 +371,7 @@ def submit():
             cursor.execute(quary, (carID, persionID))
             result = cursor.fetchall()
             split_result = []
+            # 資料格式轉換
             for item in result[0]:
                 if isinstance(item, int):
                     split_result.append(str(item))
@@ -347,9 +379,11 @@ def submit():
                     split_result.append(item)
             end_result = []
             for row in split_result:
+                # 把區的英文名字轉成中文
                 if row in location_dist.keys():
                     row = location_dist.get(row)
                 end_result.append(row)
+            # 加入各資訊title
             title = [
                 "Accident_index",
                 "Year",
@@ -393,6 +427,7 @@ def submit():
                 "Timestamp",
             ]
             combined = [[x, y] for x, y in zip(title, end_result)]
+            # 將結果回傳前端，用answer(search)顯示
             return render_template("answer(search).html", data=combined)
         return (
             render_template("answer(no choice).html")
