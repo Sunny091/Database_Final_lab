@@ -476,7 +476,8 @@ def submit():
                 # 把區的英文名字轉成中文
                 if row[0] in location_dist.keys():
                     row[0] = location_dist.get(row[0])
-                answer.append(row)
+                if row[0] and row[1]:
+                    answer.append(row)
             # 將結果轉成csv格式
             csv_buffer = io.StringIO()
             csv_writer = csv.writer(csv_buffer, delimiter=",", quotechar="'")
@@ -504,7 +505,8 @@ def submit():
                 row = list(row)
                 if row[0] in causing_factor_dist.keys():
                     row[0] = causing_factor_dist.get(row[0])
-                answer.append(row)
+                if row[0] and row[1]:
+                    answer.append(row)
             # 將結果轉成csv格式
             csv_buffer = io.StringIO()
             csv_writer = csv.writer(csv_buffer, delimiter=",", quotechar="'")
@@ -529,7 +531,8 @@ def submit():
             answer = []
             answer.append(["時間", "次數"])
             for row in result:
-                answer.append(row)
+                if row[0] and row[1]:
+                    answer.append(row)
             # 將結果轉成csv格式
             csv_buffer = io.StringIO()
             csv_writer = csv.writer(csv_buffer, delimiter=",", quotechar="'")
@@ -579,7 +582,8 @@ def submit():
                     row[0] = protective_equipement_dist.get(row[0])
                 if row[1] in main_injury_dist.keys():
                     row[1] = main_injury_dist.get(row[1])
-                answer.append(row)
+                if row[0] and row[1] and row[2]:
+                    answer.append(row)
             # 將結果轉成csv格式
             csv_buffer = io.StringIO()
             csv_writer = csv.writer(csv_buffer, delimiter=",", quotechar="'")
@@ -610,7 +614,10 @@ def submit():
                 row = list(row)
                 if row[0] in drinking_situation_dist.keys():
                     row[0] = drinking_situation_dist.get(row[0])
-                answer.append(row)
+                if row[0] and row[1]:
+                    answer.append(row)
+                if row[0] and row[1]:
+                    answer.append(row)
             # 將結果轉成csv格式
             csv_buffer = io.StringIO()
             csv_writer = csv.writer(csv_buffer, delimiter=",", quotechar="'")
@@ -662,7 +669,8 @@ def submit():
                 # 把區的英文名字轉成中文
                 if row[1] in location_dist.keys():
                     row[1] = location_dist.get(row[1])
-                answer.append(row)
+                if row[0] and row[1] and row[2]:
+                    answer.append(row)
             # 將結果轉成csv格式
             csv_buffer = io.StringIO()
             csv_writer = csv.writer(csv_buffer, delimiter=",", quotechar="'")
@@ -694,7 +702,8 @@ def submit():
                 # 把區的英文名字轉成中文
                 if row[0] in location_dist.keys():
                     row[0] = location_dist.get(row[0])
-                answer.append(row)
+                if row[0]:
+                    answer.append(row)
             # 將結果轉成csv格式
             csv_buffer = io.StringIO()
             csv_writer = csv.writer(csv_buffer, delimiter=",", quotechar="'")
@@ -743,7 +752,8 @@ def submit():
                 row = list(row)
                 if row[1] in causing_factor_dist.keys():
                     row[1] = causing_factor_dist.get(row[1])
-                answer.append(row)
+                if row[0] and row[1]:
+                    answer.append(row)
             # 將結果轉成csv格式
             csv_buffer = io.StringIO()
             csv_writer = csv.writer(csv_buffer, delimiter=",", quotechar="'")
@@ -774,7 +784,8 @@ def submit():
                 # 把區的英文名字轉成中文
                 if row[0] in location_dist.keys():
                     row[0] = location_dist.get(row[0])
-                answer.append(row)
+                if row[0] and row[1]:
+                    answer.append(row)
             # 將結果轉成csv格式
             csv_buffer = io.StringIO()
             csv_writer = csv.writer(csv_buffer, delimiter=",", quotechar="'")
@@ -802,6 +813,8 @@ def submit():
             # 資料格式轉換
             index = 0
             for item in result[0]:
+                if not item:
+                    item = "無紀錄"
                 if isinstance(item, int):
                     item = str(item)
                 if item in location_dist.keys() and index == 6:
