@@ -41,7 +41,7 @@ climat_dist = {
     "4": "雪",
     "5": "雨",
     "6": "陰",
-    "6": "晴",
+    "7": "晴",
 }
 light_dist = {
     "1": "有照明且開啟",
@@ -501,6 +501,9 @@ def submit():
             answer = []
             answer.append(["因素", "次數"])
             for row in result:
+                row = list(row)
+                if row[0] in causing_factor_dist.keys():
+                    row[0] = causing_factor_dist.get(row[0])
                 answer.append(row)
             # 將結果轉成csv格式
             csv_buffer = io.StringIO()
@@ -571,6 +574,11 @@ def submit():
             answer = []
             answer.append(["保護裝備", "主要傷處", "次數"])
             for row in result:
+                row = list(row)
+                if row[0] in protective_equipement_dist.keys():
+                    row[0] = protective_equipement_dist.get(row[0])
+                if row[1] in main_injury_dist.keys():
+                    row[1] = main_injury_dist.get(row[1])
                 answer.append(row)
             # 將結果轉成csv格式
             csv_buffer = io.StringIO()
@@ -599,6 +607,9 @@ def submit():
             answer = []
             answer.append(["飲酒程度", "受傷＋死亡（人數）"])
             for row in result:
+                row = list(row)
+                if row[0] in drinking_situation_dist.keys():
+                    row[0] = drinking_situation_dist.get(row[0])
                 answer.append(row)
             # 將結果轉成csv格式
             csv_buffer = io.StringIO()
@@ -645,6 +656,9 @@ def submit():
             answer.append(["天候", "區", "次數"])
             for row in result:
                 row = list(row)
+                row[0] = str(row[0])
+                if row[0] in climat_dist.keys():
+                    row[0] = climat_dist.get(row[0])
                 # 把區的英文名字轉成中文
                 if row[1] in location_dist.keys():
                     row[1] = location_dist.get(row[1])
@@ -726,6 +740,9 @@ def submit():
             answer = []
             answer.append(["時間", "肇因"])
             for row in result:
+                row = list(row)
+                if row[1] in causing_factor_dist.keys():
+                    row[1] = causing_factor_dist.get(row[1])
                 answer.append(row)
             # 將結果轉成csv格式
             csv_buffer = io.StringIO()
@@ -783,17 +800,62 @@ def submit():
             result = cursor.fetchall()
             split_result = []
             # 資料格式轉換
+            index = 0
             for item in result[0]:
                 if isinstance(item, int):
-                    split_result.append(str(item))
-                else:
-                    split_result.append(item)
-            end_result = []
-            for row in split_result:
-                # 把區的英文名字轉成中文
-                if row in location_dist.keys():
-                    row = location_dist.get(row)
-                end_result.append(row)
+                    item = str(item)
+                if item in location_dist.keys() and index == 6:
+                    item = location_dist.get(item)
+                if item in climat_dist.keys() and index == 9:
+                    item = climat_dist.get(item)
+                if item in light_dist.keys() and index == 10:
+                    item = light_dist.get(item)
+                if item in road_category_dist.keys() and index == 11:
+                    item = road_category_dist.get(item)
+                if item in road_type_dist.keys() and index == 13:
+                    item = road_type_dist.get(item)
+                if item in accident_location_dist.keys() and index == 14:
+                    item = accident_location_dist.get(item)
+                if item in pavemet_dist.keys() and index == 15:
+                    item = pavemet_dist.get(item)
+                if item in road_condition_dist.keys() and index == 16:
+                    item = road_condition_dist.get(item)
+                if item in road_defect_dist.keys() and index == 17:
+                    item = road_defect_dist.get(item)
+                if item in barrier_dist.keys() and index == 18:
+                    item = barrier_dist.get(item)
+                if item in sight_distance_dist.keys() and index == 19:
+                    item = sight_distance_dist.get(item)
+                if item in signal_type_dist.keys() and index == 20:
+                    item = signal_type_dist.get(item)
+                if item in signal_action_dist.keys() and index == 21:
+                    item = signal_action_dist.get(item)
+                if item in accident_type_dist.keys() and index == 22:
+                    item = accident_type_dist.get(item)
+                if item in causing_factor_dist.keys() and index == 23:
+                    item = causing_factor_dist.get(item)
+                if item in injury_degree_dist.keys() and index == 24:
+                    item = injury_degree_dist.get(item)
+                if item in main_injury_dist.keys() and index == 25:
+                    item = main_injury_dist.get(item)
+                if item in protective_equipement_dist.keys() and index == 26:
+                    item = protective_equipement_dist.get(item)
+                if item in action_state_dist.keys() and index == 27:
+                    item = action_state_dist.get(item)
+                if item in driving_qualifications_dist.keys() and index == 28:
+                    item = driving_qualifications_dist.get(item)
+                if item in driving_type_dist.keys() and index == 29:
+                    item = driving_type_dist.get(item)
+                if item in drinking_situation_dist.keys() and index == 30:
+                    item = drinking_situation_dist.get(item)
+                if item in impact_site_dist.keys() and index == 31:
+                    item = impact_site_dist.get(item)
+                if item in run_away_dist.keys() and index == 32:
+                    item = run_away_dist.get(item)
+                if item in job_dist.keys() and index == 33:
+                    item = job_dist.get(item)
+                index += 1
+                split_result.append(item)
             # 加入各資訊title
             title = [
                 "Accident_index",
@@ -837,7 +899,7 @@ def submit():
                 "Car_type",
                 "Timestamp",
             ]
-            combined = [[x, y] for x, y in zip(title, end_result)]
+            combined = [[x, y] for x, y in zip(title, split_result)]
             # 將結果回傳前端，用answer(search)顯示
             return render_template("answer(search).html", data=combined)
         return (
