@@ -17,13 +17,13 @@
                     <div style="position: relative">
                         <img src="static/欄位.jpg" width="100" height="100" />
                         <img src="static/欄位2.jpg" width="400" height="100" />
-                        <span style="position: absolute; top: 40; left: 510"
+                        <span style="position: absolute; top: 40; left: 527"
                             >您的身分</span
                         >
 
                         <label
                             for="masses"
-                            style="position: absolute; top: 40; left: 650"
+                            style="position: absolute; top: 40; left: 660"
                         >
                             <input
                                 type="radio"
@@ -37,7 +37,7 @@
 
                         <label
                             for="organization"
-                            style="position: absolute; top: 40; left: 800"
+                            style="position: absolute; top: 40; left: 810"
                         >
                             <input
                                 type="radio"
@@ -62,15 +62,15 @@
                                 width="400"
                                 height="100"
                             />
-                            <span style="position: absolute; top: 30; left: 510"
+                            <span style="position: absolute; top: 30; left: 527"
                                 >功能選擇</span
                             >
-                            <span style="position: absolute; top: 60; left: 505"
+                            <span style="position: absolute; top: 60; left: 522"
                                 >(一般民眾)</span
                             >
                             <label
                                 for="accidentinfo_pub"
-                                style="position: absolute; top: 40; left: 650"
+                                style="position: absolute; top: 40; left: 660"
                             >
                                 <input
                                     type="radio"
@@ -84,7 +84,7 @@
 
                             <label
                                 for="statisticinfo_pub"
-                                style="position: absolute; top: 40; left: 800"
+                                style="position: absolute; top: 40; left: 810"
                             >
                                 <input
                                     type="radio"
@@ -110,15 +110,15 @@
                                 width="400"
                                 height="100"
                             />
-                            <span style="position: absolute; top: 30; left: 510"
+                            <span style="position: absolute; top: 30; left: 527"
                                 >功能選擇</span
                             >
-                            <span style="position: absolute; top: 60; left: 505"
+                            <span style="position: absolute; top: 60; left: 522"
                                 >(公家機關)</span
                             >
                             <label
                                 for="accidentinfo"
-                                style="position: absolute; top: 40; left: 650"
+                                style="position: absolute; top: 40; left: 660"
                             >
                                 <input
                                     type="radio"
@@ -132,7 +132,7 @@
 
                             <label
                                 for="statisticinfo"
-                                style="position: absolute; top: 40; left: 800"
+                                style="position: absolute; top: 40; left: 810"
                             >
                                 <input
                                     type="radio"
@@ -191,7 +191,7 @@
                                 width="400"
                                 height="100"
                             />
-                            <span style="position: absolute; top: 40; left: 510"
+                            <span style="position: absolute; top: 40; left: 527"
                                 >填入資料</span
                             >
                             <form method="post" action="/submit">
@@ -200,7 +200,7 @@
                                     style="
                                         position: absolute;
                                         top: 25;
-                                        left: 650;
+                                        left: 660;
                                     "
                                     >身分證字號</span
                                 >
@@ -208,17 +208,20 @@
                                     style="
                                         position: absolute;
                                         top: 30;
-                                        left: 750;
+                                        left: 760;
                                     "
+	                pattern="[A-Z]{1}\d{9}"
+	                required="required"
                                     name="personID"
-                                    placeholder="請輸入身分證字號"
+	                id="personID"
+                                    placeholder="範例：A123456789"
                                 /><br />
                                 <br />
                                 <span
                                     style="
                                         position: absolute;
                                         top: 55;
-                                        left: 650;
+                                        left: 660;
                                     "
                                     >車牌號碼</span
                                 >
@@ -226,10 +229,13 @@
                                     style="
                                         position: absolute;
                                         top: 60;
-                                        left: 750;
+                                        left: 760;
                                     "
+	                pattern="[A-Z]{3}-\d{4}"
+	                required="required"
                                     name="carID"
-                                    placeholder="請輸入車牌號碼"
+	                id="carID"
+                                    placeholder="範例：AAA-1234"
                                 /><br />
                                 <input
                                     name="submit"
@@ -237,7 +243,7 @@
                                     style="
                                         position: absolute;
                                         top: 110;
-                                        left: 895;
+                                        left: 912;
                                     "
                                     src="static/確認查詢.jpg"
                                     width="100"
@@ -246,7 +252,8 @@
                             </form>
                         </div>
                     </div>
-
+	
+	
                     <div id="img2" style="display: none">
                         <div style="position: relative">
                             <img
@@ -260,7 +267,7 @@
                                 height="230"
                             />
                             <span
-                                style="position: absolute; top: 105; left: 510"
+                                style="position: absolute; top: 105; left: 527"
                                 >查詢選項</span
                             >
 
@@ -270,7 +277,7 @@
                                     style="
                                         position: absolute;
                                         top: 0;
-                                        left: 650;
+                                        left: 660;
                                         text-align: left;
                                     "
                                 >
@@ -345,7 +352,7 @@
                                     style="
                                         position: absolute;
                                         top: 240;
-                                        left: 895;
+                                        left: 912;
                                     "
                                     src="static/確認查詢.jpg"
                                     width="100"
@@ -367,7 +374,7 @@
                                 width="400"
                                 height="100"
                             />
-                            <span style="position: absolute; top: 40; left: 510"
+                            <span style="position: absolute; top: 40; left: 527"
                                 >查詢選項</span
                             >
 
@@ -377,7 +384,7 @@
                                     style="
                                         position: absolute;
                                         top: 0;
-                                        left: 650;
+                                        left: 660;
                                         text-align: left;
                                     "
                                 >
@@ -410,7 +417,7 @@
                                     style="
                                         position: absolute;
                                         top: 110;
-                                        left: 895;
+                                        left: 912;
                                     "
                                     src="static/確認查詢.jpg"
                                     width="100"

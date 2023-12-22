@@ -2,7 +2,7 @@
 <html>
     <style>
         table {
-            width: 50%; /* 设置表格宽度 */
+            width: 34%; /* 设置表格宽度 */
             margin: 0 auto; /* 居中显示表格 */
             border-collapse: collapse;
         }
@@ -29,20 +29,14 @@
                 <b>
                     <br />
                     <img src="static/poster.jpg" width="500" />
-                    查詢結果
                     <br />
-                    <form method="post" action="/reset">
-                        <input
-                            name="reset"
-                            type="image"
-                            src="static/返回.jpg"
-                            width="100"
-                            height="30"
-                        />
-                    </form>
                 </b>
             </font>
-        </div>
+        <b>
+        	<table>
+		<td bgcolor="#CCCCCC">查詢結果</td>
+        	</table>
+        </b>
         <table>
             <tr>
                 <th>{{data[0][0]}}</th>
@@ -51,11 +45,24 @@
             </tr>
             {% for row in data[1:] %}
             <tr>
-                <td>{{ row[0] }}</td>
-                <td>{{ row[1] }}</td>
-                <td>{{ row[2] }}</td>
+                <td bgcolor="white">{{ row[0] }}</td>
+                <td bgcolor="white">{{ row[1] }}</td>
+                <td bgcolor="white">{{ row[2] }}</td>
             </tr>
             {% endfor %}
         </table>
+        <br />
+                    
+        <br />
+        <form method="post" action="/reset">
+                        <input
+                            name="reset"
+                            type="image"
+                            src="static/返回.jpg"
+                            width="100"
+                            height="30"
+                        />
+         </form>
+        </div>
     </body>
 </html>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-    <style>
+     <style>
         table {
             width: 34%; /* 设置表格宽度 */
             margin: 0 auto; /* 居中显示表格 */
@@ -36,16 +36,8 @@
         	<table>
 		<td bgcolor="#CCCCCC">查詢結果</td>
         	</table>
+	<span>** 查無該筆紀錄 **</span>
         </b>
-
-        <table>
-            {% for row in data %}
-            <tr>
-                <td bgcolor="#f2f2f2">{{ row[0] }}</td>
-                <td bgcolor="white">{{ row[1] }}</td>
-            </tr>
-            {% endfor %}
-        </table>
         <br />
                     
         <br />

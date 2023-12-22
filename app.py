@@ -812,9 +812,9 @@ def submit():
             index = 0
             # 如果查詢不到資料
             if not result:
-                return render_template("answer(no choice).html")
+                return render_template("answer(search_no_answer).html")
             for item in result[0]:
-                if not item:
+                if not item and item != 0:
                     item = "無紀錄"
                 if isinstance(item, int):
                     item = str(item)
@@ -872,46 +872,46 @@ def submit():
                 split_result.append(item)
             # 加入各資訊title
             title = [
-                "Accident_index",
-                "Year",
-                "Month",
-                "Day",
-                "Hour",
-                "Minute",
-                "District",
-                "Death_num",
-                "Injury_num",
-                "Climate",
-                "Light",
-                "Road_category",
-                "Speed_limit",
-                "Road_type",
-                "Accident_location",
-                "Pavement",
-                "Road_conditon",
-                "Road_defect",
-                "Barrier",
-                "Sight_distance",
-                "Signal_type",
-                "Signal_action",
-                "Accident_type",
-                "Causing_factory",
-                "Injury_degree",
-                "Main_injury",
-                "Protective_equipement",
-                "Action_status",
-                "Driving_qualifications",
-                "Driving_type",
-                "Drinking_situation",
-                "Impact_site",
-                "Run_away",
-                "Job",
-                "GPS_X",
-                "GPS_Y",
-                "License_num",
-                "ID_card",
-                "Car_type",
-                "Timestamp",
+                "事故編號",
+                "年",
+                "月",
+                "日",
+                "時",
+                "分",
+                "區",
+                "死亡數量",
+                "受傷數量",
+                "天候",
+                "光線",
+                "道路類別",
+                "速限",
+                "道路型態",
+                "事故位置",
+                "路面鋪裝",
+                "路面狀態",
+                "路面缺陷",
+                "障礙物",
+                "視距",
+                "號誌種類",
+                "號誌動作",
+                "事故類型",
+                "主要肇因",
+                "受傷程度",
+                "主要傷處",
+                "保護裝備",
+                "行動狀態",
+                "駕駛資格情形",
+                "駕駛執照種類",
+                "飲酒情形",
+                "撞擊部位",
+                "肇事逃逸",
+                "職業",
+                "GPS_經度",
+                "GPS_緯度",
+                "車牌號碼",
+                "身分證字號",
+                "車種",
+                "時間郵戳",
             ]
             combined = [[x, y] for x, y in zip(title, split_result)]
             # 將結果回傳前端，用answer(search)顯示
@@ -940,4 +940,8 @@ if __name__ == "__main__":
     )
     cursor = conn.cursor()
 
-    app.run(debug=True)
+    print("http://localhost:8080")
+
+    from waitress import serve
+
+    serve(app, host="0.0.0.0", port=8080)
