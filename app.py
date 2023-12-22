@@ -616,8 +616,6 @@ def submit():
                     row[0] = drinking_situation_dist.get(row[0])
                 if row[0] and row[1]:
                     answer.append(row)
-                if row[0] and row[1]:
-                    answer.append(row)
             # 將結果轉成csv格式
             csv_buffer = io.StringIO()
             csv_writer = csv.writer(csv_buffer, delimiter=",", quotechar="'")
@@ -812,6 +810,9 @@ def submit():
             split_result = []
             # 資料格式轉換
             index = 0
+            # 如果查詢不到資料
+            if not result:
+                return render_template("answer(no choice).html")
             for item in result[0]:
                 if not item:
                     item = "無紀錄"
