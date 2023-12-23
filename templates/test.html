@@ -17,13 +17,13 @@
                     <div style="position: relative">
                         <img src="static/欄位.jpg" width="100" height="100" />
                         <img src="static/欄位2.jpg" width="400" height="100" />
-                        <span style="position: absolute; top: 40; left: 527"
+                        <span style="position: absolute; top: 40; left: 510"
                             >您的身分</span
                         >
 
                         <label
                             for="masses"
-                            style="position: absolute; top: 40; left: 660"
+                            style="position: absolute; top: 40; left: 650"
                         >
                             <input
                                 type="radio"
@@ -37,7 +37,7 @@
 
                         <label
                             for="organization"
-                            style="position: absolute; top: 40; left: 810"
+                            style="position: absolute; top: 40; left: 800"
                         >
                             <input
                                 type="radio"
@@ -62,15 +62,15 @@
                                 width="400"
                                 height="100"
                             />
-                            <span style="position: absolute; top: 30; left: 527"
+                            <span style="position: absolute; top: 30; left: 510"
                                 >功能選擇</span
                             >
-                            <span style="position: absolute; top: 60; left: 522"
+                            <span style="position: absolute; top: 60; left: 505"
                                 >(一般民眾)</span
                             >
                             <label
                                 for="accidentinfo_pub"
-                                style="position: absolute; top: 40; left: 660"
+                                style="position: absolute; top: 40; left: 650"
                             >
                                 <input
                                     type="radio"
@@ -84,7 +84,7 @@
 
                             <label
                                 for="statisticinfo_pub"
-                                style="position: absolute; top: 40; left: 810"
+                                style="position: absolute; top: 40; left: 800"
                             >
                                 <input
                                     type="radio"
@@ -110,15 +110,15 @@
                                 width="400"
                                 height="100"
                             />
-                            <span style="position: absolute; top: 30; left: 527"
+                            <span style="position: absolute; top: 30; left: 510"
                                 >功能選擇</span
                             >
-                            <span style="position: absolute; top: 60; left: 522"
+                            <span style="position: absolute; top: 60; left: 505"
                                 >(公家機關)</span
                             >
                             <label
                                 for="accidentinfo"
-                                style="position: absolute; top: 40; left: 660"
+                                style="position: absolute; top: 40; left: 650"
                             >
                                 <input
                                     type="radio"
@@ -132,7 +132,7 @@
 
                             <label
                                 for="statisticinfo"
-                                style="position: absolute; top: 40; left: 810"
+                                style="position: absolute; top: 40; left: 800"
                             >
                                 <input
                                     type="radio"
@@ -191,7 +191,7 @@
                                 width="400"
                                 height="100"
                             />
-                            <span style="position: absolute; top: 40; left: 527"
+                            <span style="position: absolute; top: 40; left: 510"
                                 >填入資料</span
                             >
                             <form method="post" action="/submit">
@@ -200,7 +200,7 @@
                                     style="
                                         position: absolute;
                                         top: 25;
-                                        left: 660;
+                                        left: 650;
                                     "
                                     >身分證字號</span
                                 >
@@ -208,7 +208,7 @@
                                     style="
                                         position: absolute;
                                         top: 30;
-                                        left: 760;
+                                        left: 750;
                                     "
 	                pattern="[A-Z]{1}\d{9}"
 	                required="required"
@@ -221,7 +221,7 @@
                                     style="
                                         position: absolute;
                                         top: 55;
-                                        left: 660;
+                                        left: 650;
                                     "
                                     >車牌號碼</span
                                 >
@@ -229,9 +229,9 @@
                                     style="
                                         position: absolute;
                                         top: 60;
-                                        left: 760;
+                                        left: 750;
                                     "
-	                pattern="[A-Z]{3}-\d{4}"
+	                pattern="[A-Z]{3}-\d{3,4}"
 	                required="required"
                                     name="carID"
 	                id="carID"
@@ -243,7 +243,7 @@
                                     style="
                                         position: absolute;
                                         top: 110;
-                                        left: 912;
+                                        left: 895;
                                     "
                                     src="static/確認查詢.jpg"
                                     width="100"
@@ -267,7 +267,7 @@
                                 height="230"
                             />
                             <span
-                                style="position: absolute; top: 105; left: 527"
+                                style="position: absolute; top: 105; left: 510"
                                 >查詢選項</span
                             >
 
@@ -277,7 +277,7 @@
                                     style="
                                         position: absolute;
                                         top: 0;
-                                        left: 660;
+                                        left: 650;
                                         text-align: left;
                                     "
                                 >
@@ -287,6 +287,7 @@
                                         id="1"
                                         name="choice"
                                         value="1"
+		required="required"
                                     />
                                     哪區交通事故最頻繁 <br />
                                     <input
@@ -294,6 +295,7 @@
                                         id="1"
                                         name="choice"
                                         value="2"
+		required="required"
                                     />
                                     交通事故肇事因素排行 <br />
                                     <input
@@ -301,6 +303,7 @@
                                         id="1"
                                         name="choice"
                                         value="3"
+		required="required"
                                     />
                                     最容易發生交通事故的時段 <br />
                                     <input
@@ -308,6 +311,7 @@
                                         id="1"
                                         name="choice"
                                         value="4"
+		required="required"
                                     />
                                     保護裝備和主要傷處的關聯 <br />
                                     <input
@@ -315,6 +319,7 @@
                                         id="1"
                                         name="choice"
                                         value="5"
+		required="required"
                                     />
                                     飲酒程度和受傷程度的關聯 <br />
                                     <input
@@ -322,6 +327,7 @@
                                         id="1"
                                         name="choice"
                                         value="6"
+		required="required"
                                     />
                                     天候和地點的關聯 <br />
                                     <input
@@ -329,6 +335,7 @@
                                         id="1"
                                         name="choice"
                                         value="7"
+		required="required"
                                     />
                                     哪裡容易因路面不平而造成車禍 <br />
                                     <input
@@ -336,6 +343,7 @@
                                         id="1"
                                         name="choice"
                                         value="8"
+		required="required"
                                     />
                                     時間和主要肇因的關聯 <br />
                                     <input
@@ -343,6 +351,7 @@
                                         id="1"
                                         name="choice"
                                         value="9"
+		required="required"
                                     />
                                     計算各區因酒駕肇事的排名 <br />
                                 </label>
@@ -352,7 +361,7 @@
                                     style="
                                         position: absolute;
                                         top: 240;
-                                        left: 912;
+                                        left: 895;
                                     "
                                     src="static/確認查詢.jpg"
                                     width="100"
@@ -374,7 +383,7 @@
                                 width="400"
                                 height="100"
                             />
-                            <span style="position: absolute; top: 40; left: 527"
+                            <span style="position: absolute; top: 40; left: 510"
                                 >查詢選項</span
                             >
 
@@ -384,7 +393,7 @@
                                     style="
                                         position: absolute;
                                         top: 0;
-                                        left: 660;
+                                        left: 650;
                                         text-align: left;
                                     "
                                 >
@@ -394,6 +403,7 @@
                                         id="1"
                                         name="choice"
                                         value="1"
+		required="required"
                                     />
                                     哪區交通事故最頻繁 <br />
                                     <input
@@ -401,6 +411,7 @@
                                         id="1"
                                         name="choice"
                                         value="2"
+		required="required"
                                     />
                                     交通事故肇事因素排行 <br />
                                     <input
@@ -408,6 +419,7 @@
                                         id="1"
                                         name="choice"
                                         value="3"
+		required="required"
                                     />
                                     最容易發生交通事故的時段 <br />
                                 </label>
@@ -417,7 +429,7 @@
                                     style="
                                         position: absolute;
                                         top: 110;
-                                        left: 912;
+                                        left: 895;
                                     "
                                     src="static/確認查詢.jpg"
                                     width="100"
