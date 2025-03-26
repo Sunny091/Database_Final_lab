@@ -484,7 +484,8 @@ def submit():
             for row in answer:
                 csv_writer.writerow(row)
             csv_data = csv_buffer.getvalue()
-            csv_data_list = [line.split(",") for line in csv_data.split("\n") if line]
+            csv_data_list = [line.split(",")
+                             for line in csv_data.split("\n") if line]
             # 將結果回傳前端，用answer(x2)顯示
             return render_template("answer(x2).html", data=csv_data_list)
 
@@ -513,7 +514,8 @@ def submit():
             for row in answer:
                 csv_writer.writerow(row)
             csv_data = csv_buffer.getvalue()
-            csv_data_list = [line.split(",") for line in csv_data.split("\n") if line]
+            csv_data_list = [line.split(",")
+                             for line in csv_data.split("\n") if line]
             # 將結果回傳前端，用answer(x2)顯示
             return render_template("answer(x2).html", data=csv_data_list)
 
@@ -539,7 +541,8 @@ def submit():
             for row in answer:
                 csv_writer.writerow(row)
             csv_data = csv_buffer.getvalue()
-            csv_data_list = [line.split(",") for line in csv_data.split("\n") if line]
+            csv_data_list = [line.split(",")
+                             for line in csv_data.split("\n") if line]
             # 將結果回傳前端，用answer(x2)顯示
             return render_template("answer(x2).html", data=csv_data_list)
 
@@ -590,7 +593,8 @@ def submit():
             for row in answer:
                 csv_writer.writerow(row)
             csv_data = csv_buffer.getvalue()
-            csv_data_list = [line.split(",") for line in csv_data.split("\n") if line]
+            csv_data_list = [line.split(",")
+                             for line in csv_data.split("\n") if line]
             # 將結果回傳前端，用answer(x3)顯示
             return render_template("answer(x3).html", data=csv_data_list)
 
@@ -622,7 +626,8 @@ def submit():
             for row in answer:
                 csv_writer.writerow(row)
             csv_data = csv_buffer.getvalue()
-            csv_data_list = [line.split(",") for line in csv_data.split("\n") if line]
+            csv_data_list = [line.split(",")
+                             for line in csv_data.split("\n") if line]
             # 將結果回傳前端，用answer(x2)顯示
             return render_template("answer(x2).html", data=csv_data_list)
 
@@ -675,7 +680,8 @@ def submit():
             for row in answer:
                 csv_writer.writerow(row)
             csv_data = csv_buffer.getvalue()
-            csv_data_list = [line.split(",") for line in csv_data.split("\n") if line]
+            csv_data_list = [line.split(",")
+                             for line in csv_data.split("\n") if line]
             # 將結果回傳前端，用answer(x3)顯示
             return render_template("answer(x3).html", data=csv_data_list)
 
@@ -708,7 +714,8 @@ def submit():
             for row in answer:
                 csv_writer.writerow(row)
             csv_data = csv_buffer.getvalue()
-            csv_data_list = [line.split(",") for line in csv_data.split("\n") if line]
+            csv_data_list = [line.split(",")
+                             for line in csv_data.split("\n") if line]
             # 將結果回傳前端，用answer(x4)顯示
             return render_template("answer(x4).html", data=csv_data_list)
 
@@ -758,7 +765,8 @@ def submit():
             for row in answer:
                 csv_writer.writerow(row)
             csv_data = csv_buffer.getvalue()
-            csv_data_list = [line.split(",") for line in csv_data.split("\n") if line]
+            csv_data_list = [line.split(",")
+                             for line in csv_data.split("\n") if line]
             # 將結果回傳前端，用answer(x2)顯示
             return render_template("answer(x2).html", data=csv_data_list)
 
@@ -790,7 +798,8 @@ def submit():
             for row in answer:
                 csv_writer.writerow(row)
             csv_data = csv_buffer.getvalue()
-            csv_data_list = [line.split(",") for line in csv_data.split("\n") if line]
+            csv_data_list = [line.split(",")
+                             for line in csv_data.split("\n") if line]
             # 將結果回傳前端，用answer(x2)顯示
             return render_template("answer(x2).html", data=csv_data_list)
 
